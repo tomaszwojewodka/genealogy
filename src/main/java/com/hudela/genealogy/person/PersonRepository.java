@@ -32,13 +32,26 @@ public class PersonRepository {
 		}
 	}
 
+	public void deletePerson(Person person) {
+		OrientGraph graph = provider.getGraph();
+		try {
+			OrientVertex vertex = graph.getVertex(person.getId());
+			graph.removeVertex(vertex);
+			graph.commit();
+		} catch (Exception e) {
+			graph.rollback();
+		} finally {
+			graph.shutdown();
+		}
+	}
+
 	public List<Person> findAll() {
 		OrientGraph graph = provider.getGraph();
 		List<Person> result = new ArrayList<>();
 		try {
 			for (Vertex v : (Iterable<Vertex>) graph.command(
 					new OCommandSQL("select from Person;")).execute()) {
-				result.add(new Person(v.getProperty("firstName"), v.getProperty("lastName")));
+				result.add(new Person(v.getId().toString(), v.getProperty("firstName"), v.getProperty("lastName")));
 			}
 		} catch (Exception e) {
 			graph.rollback();

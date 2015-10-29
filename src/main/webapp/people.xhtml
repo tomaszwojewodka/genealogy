@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+    <h:form id="peopleForm">
+        <p:growl id="messages" for="msg"/>
+
+        <p:dialog header="Person Details" widgetVar="personDialog" modal="true" showEffect="fade" hideEffect="fade"
+                  resizable="false">
+            <p:outputPanel id="personPanel">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="firstname" value="Firstname:"/>
+                    <p:inputText id="firstname" value="#{personView.firstName}" label="Firstname"/>
+                    <p:outputLabel for="lastname" value="Lastname:"/>
+                    <p:inputText id="lastname" value="#{personView.lastName}" label="Lastname"/>
+                </h:panelGrid>
+
+                <p:commandButton value="Save" update="personPanel, peoplePanel, messages"
+                                 actionListener="#{personView.save}"
+                                 icon="ui-icon-check" oncomplete="PF('personDialog').hide()"/>
+            </p:outputPanel>
+        </p:dialog>
+        <p:panel id="peoplePanel" header="List of people">
+            <p:contextMenu for="peopleData">
+                <p:menuitem value="Add" icon="ui-icon-search" oncomplete="PF('personDialog').show()"/>
+                <p:menuitem value="Delete" update="peopleData, messages" icon="ui-icon-close"
+                            actionListener="#{menuView.delete}"/>
+            </p:contextMenu>
+            <p:dataTable id="peopleData" var="person" value="#{peopleView.people}" rowKey="#{person.id}"
+                         selection="#{menuView.selectedPerson}" selectionMode="single">
+
+                <f:facet name="header">
+                    RightClick to View Options
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{person.id}"/>
+                </p:column>
+
+                <p:column headerText="First Name">
+                    <h:outputText value="#{person.firstName}"/>
+                </p:column>
+
+                <p:column headerText="Last Name">
+                    <h:outputText value="#{person.lastName}"/>
+                </p:column>
+            </p:dataTable>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>  
