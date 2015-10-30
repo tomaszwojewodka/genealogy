@@ -37,4 +37,13 @@ public class Person {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+	public String getIdentity() {
+		return toString();
+	}
+
+	@Override
+	public String toString() {
+		return id + " " + firstName + " " + lastName;
+	}
 }

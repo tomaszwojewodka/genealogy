@@ -26,10 +26,28 @@
                                  icon="ui-icon-check" oncomplete="PF('personDialog').hide()"/>
             </p:outputPanel>
         </p:dialog>
+
+        <p:dialog header="Parent Details" widgetVar="parentDialog" modal="true" showEffect="fade" hideEffect="fade"
+                  resizable="false">
+            <p:outputPanel id="parentPanel">
+                <h:panelGrid columns="1" cellpadding="5">
+                    <p:outputLabel value="Parent:" for="parentSelect"/>
+                    <p:autoComplete id="parentSelect" value="#{menuView.selectedParent}"
+                                    completeMethod="#{peopleView.getPeopleLike}"
+                                    var="parent" itemLabel="#{parent.identity}" itemValue="#{parent}"
+                                    converter="com.hudela.PersonConverter"/>
+                </h:panelGrid>
+
+                <p:commandButton value="Save" update="parentPanel, peoplePanel, messages"
+                                 actionListener="#{menuView.addParent}"
+                                 icon="ui-icon-check" oncomplete="PF('parentDialog').hide()"/>
+            </p:outputPanel>
+        </p:dialog>
         <p:panel id="peoplePanel" header="List of people">
             <p:contextMenu for="peopleData">
-                <p:menuitem value="Add" icon="ui-icon-search" oncomplete="PF('personDialog').show()"/>
-                <p:menuitem value="Delete" update="peopleData, messages" icon="ui-icon-close"
+                <p:menuitem value="Assign a parent" icon="ui-icon-search" oncomplete="PF('parentDialog').show()"/>
+                <p:menuitem value="Add new person" icon="ui-icon-search" oncomplete="PF('personDialog').show()"/>
+                <p:menuitem value="Delete person" update="peopleData, messages" icon="ui-icon-close"
                             actionListener="#{menuView.delete}"/>
             </p:contextMenu>
             <p:dataTable id="peopleData" var="person" value="#{peopleView.people}" rowKey="#{person.id}"

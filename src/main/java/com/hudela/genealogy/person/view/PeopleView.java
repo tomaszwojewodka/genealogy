@@ -18,4 +18,8 @@ public class PeopleView implements Serializable {
 	public List<Person> getPeople() {
 		return repository.findAll();
 	}
+
+	public List<Person> getPeopleLike(String name) {
+		return repository.findLike(name);
+	}
 }

@@ -17,15 +17,27 @@ public class MenuView implements Serializable {
 	private PersonRepository repository;
 
 	private Person selectedPerson;
+	private Person selectedParent;
 
 	public MenuView() {
 	}
 
-	public void delete() {
-		FacesContext.getCurrentInstance().addMessage("msg",
-				new FacesMessage("Deleted " + selectedPerson.getFirstName() + " " + selectedPerson.getLastName()));
-		repository.deletePerson(selectedPerson);
+	public void addParent() {
+		repository.addParent(selectedPerson, selectedParent);
+		addMessage(String.format("Added parent %s to %s", selectedParent, selectedPerson));
+		selectedParent = null;
 		selectedPerson = null;
+	}
+
+	public void delete() {
+		repository.deletePerson(selectedPerson);
+		addMessage("Deleted " + selectedPerson.getFirstName() + " " + selectedPerson.getLastName());
+		selectedPerson = null;
+	}
+
+	private void addMessage(String summary) {
+		FacesContext.getCurrentInstance().addMessage("msg",
+				new FacesMessage(summary));
 	}
 
 	public Person getSelectedPerson() {
@@ -34,5 +46,13 @@ public class MenuView implements Serializable {
 
 	public void setSelectedPerson(Person selectedPerson) {
 		this.selectedPerson = selectedPerson;
+	}
+
+	public Person getSelectedParent() {
+		return selectedParent;
+	}
+
+	public void setSelectedParent(Person selectedParent) {
+		this.selectedParent = selectedParent;
 	}
 }
