@@ -1,12 +1,12 @@
-package com.hudela.genealogy.person;
+package it.streamlining.genealogy.person;
 
-import com.hudela.genealogy.configuration.orientdb.OrientDBProvider;
-import com.hudela.genealogy.person.dto.Person;
 import com.orientechnologies.orient.core.sql.OCommandSQL;
 import com.tinkerpop.blueprints.Vertex;
 import com.tinkerpop.blueprints.impls.orient.OrientEdge;
 import com.tinkerpop.blueprints.impls.orient.OrientGraph;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
+import it.streamlining.genealogy.configuration.orientdb.OrientDBProvider;
+import it.streamlining.genealogy.person.dto.Person;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;

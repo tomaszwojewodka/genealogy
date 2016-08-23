@@ -1,7 +1,7 @@
-package com.hudela.genealogy.person.view;
+package it.streamlining.genealogy.person.view;
 
-import com.hudela.genealogy.person.PersonRepository;
-import com.hudela.genealogy.person.dto.Person;
+import it.streamlining.genealogy.person.PersonRepository;
+import it.streamlining.genealogy.person.dto.Person;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;

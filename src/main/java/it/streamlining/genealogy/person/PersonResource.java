@@ -1,4 +1,4 @@
-package com.hudela.genealogy.person;
+package it.streamlining.genealogy.person;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;

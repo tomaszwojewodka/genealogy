@@ -1,6 +1,6 @@
-package com.hudela.genealogy.person.view;
+package it.streamlining.genealogy.person.view;
 
-import com.hudela.genealogy.person.PersonRepository;
+import it.streamlining.genealogy.person.PersonRepository;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;

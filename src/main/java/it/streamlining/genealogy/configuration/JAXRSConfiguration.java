@@ -1,4 +1,4 @@
-package com.hudela.genealogy.configuration;
+package it.streamlining.genealogy.configuration;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

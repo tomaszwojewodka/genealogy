@@ -1,4 +1,4 @@
-package com.hudela.genealogy.person.dto;
+package it.streamlining.genealogy.person.dto;
 
 public class Person {
 	private String id;

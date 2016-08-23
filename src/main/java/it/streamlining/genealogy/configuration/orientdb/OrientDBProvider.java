@@ -1,4 +1,4 @@
-package com.hudela.genealogy.configuration.orientdb;
+package it.streamlining.genealogy.configuration.orientdb;
 
 import com.tinkerpop.blueprints.impls.orient.OrientGraph;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;

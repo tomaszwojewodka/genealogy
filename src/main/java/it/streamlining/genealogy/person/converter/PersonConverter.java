@@ -1,6 +1,6 @@
-package com.hudela.genealogy.person.converter;
+package it.streamlining.genealogy.person.converter;
 
-import com.hudela.genealogy.person.dto.Person;
+import it.streamlining.genealogy.person.dto.Person;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
